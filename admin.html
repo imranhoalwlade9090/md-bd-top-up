@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>MB BD Admin</title><link rel="stylesheet" href="styles.css"></head>
+<body><main class="shell section"><span class="section-label">ADMIN</span><h1>Order verification</h1><p class="modal-lead">Sign in with an administrator Firebase account.</p><button class="button button-primary" id="login">Sign in with Google</button><button class="button button-quiet" id="load">Load orders</button><div id="orders"></div></main>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script><script src="firebase-config.js"></script><script src="/auth.js"></script>
+<script>
+const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (character) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#039;" }[character]));
+document.getElementById("login").addEventListener("click", () => MBAuth.google());
+document.getElementById("load").addEventListener("click", async () => {
+  const token = await MBAuth.token();
+  const response = await fetch("/api/admin/orders", { headers: { authorization: "Bearer " + token } });
+  const orders = await response.json();
+  if (!response.ok) return document.getElementById("orders").textContent = orders.error || "Unable to load orders";
+  document.getElementById("orders").innerHTML = orders.map((order) => `<article class="track-result"><strong>${escapeHtml(order.id)} — ${escapeHtml(order.product_name)}</strong><p>${escapeHtml(order.customer_name)} · ${escapeHtml(order.customer_email)} · ${escapeHtml(order.payment_method)} · ${escapeHtml(order.transaction_id)}</p><p>Payment: ${escapeHtml(order.payment_status)} · Order: ${escapeHtml(order.order_status)}</p>${order.payment_status === "Pending" ? `<button class="button submit-order" data-id="${escapeHtml(order.id)}">Verify payment</button>` : ""}</article>`).join("");
+  document.querySelectorAll("[data-id]").forEach((button) => button.addEventListener("click", async () => {
+    button.disabled = true;
+    const token = await MBAuth.token();
+    await fetch(`/api/admin/orders/${encodeURIComponent(button.dataset.id)}/verify`, { method: "POST", headers: { authorization: "Bearer " + token, "Content-Type": "application/json" } });
+    document.getElementById("load").click();
+  }));
+});
+</script></body></html>

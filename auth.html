@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Sign in - MB BD</title><link rel="stylesheet" href="styles.css"><script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script><script src="firebase-config.js"></script></head>
+<body><main class="shell section"><a class="brand" href="./"><span class="brand-mark">MB</span><span class="brand-copy"><b>MB BD</b><small>TOP OF ALL APPS</small></span></a><div class="modal" style="margin:60px auto;max-width:520px"><span class="section-label">CUSTOMER ACCOUNT</span><h1 id="title">Sign in</h1><p class="modal-lead">Sign in before placing an order.</p><div class="field"><label for="email">Email address</label><input id="email" type="email" autocomplete="email" required></div><div class="field"><label for="password">Password</label><input id="password" type="password" autocomplete="current-password" required></div><button class="button button-primary" id="submit" type="button">Sign in</button><button class="button button-quiet" id="google" type="button">Continue with Google</button><button class="button button-quiet" id="toggle" type="button">Create an account</button><p id="message" class="modal-lead"></p></div></main><script src="auth.js"></script><script>
+let registering = false;
+const message = document.getElementById("message");
+const finish = () => location.href = new URLSearchParams(location.search).get("return") || "./";
+document.getElementById("google").onclick = () => MBAuth.google().then(finish).catch((error) => message.textContent = error.message);
+document.getElementById("toggle").onclick = () => { registering = !registering; document.getElementById("title").textContent = registering ? "Create an account" : "Sign in"; document.getElementById("submit").textContent = registering ? "Create account" : "Sign in"; };
+document.getElementById("submit").onclick = () => { const action = registering ? MBAuth.register : MBAuth.signIn; action(document.getElementById("email").value, document.getElementById("password").value).then(finish).catch((error) => message.textContent = error.message); };
+</script></body></html>

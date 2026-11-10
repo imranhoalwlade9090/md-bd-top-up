@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MB BD TOP OF ALL APPS — fast, trusted gaming top-ups, app subscriptions and promotional services in Bangladesh.">
+  <title>MB BD TOP OF ALL APPS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script src="firebase-config.js"></script>
+</head>
+<body>
+  <div class="topbar"><div class="shell topbar-inner"><span>⚡ Fast delivery</span><span class="topbar-dot"></span><span>Secure manual payment verification</span><span class="topbar-spacer"></span><span>Need help? <a href="#support">01728 557 709</a></span></div></div>
+  <header class="site-header">
+    <div class="shell nav">
+      <a class="brand" href="#home" aria-label="MB BD home"><span class="brand-mark">MB</span><span class="brand-copy"><b>MB BD</b><small>TOP OF ALL APPS</small></span></a>
+      <nav class="desktop-nav" aria-label="Primary navigation"><a href="#products">Products</a><a href="#how-it-works">How it works</a><a href="#support">Support</a></nav>
+      <div class="nav-actions"><button class="lang-btn" id="langBtn" type="button">বাংলা <span>EN</span></button><button class="track-btn" id="trackBtn" type="button"><span>↗</span> Track order</button><button class="menu-btn" id="menuBtn" aria-label="Open menu" type="button">☰</button></div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu"><a href="#products">Products</a><a href="#how-it-works">How it works</a><a href="#support">Support</a></div>
+  </header>
+
+  <main id="home">
+    <section class="hero shell">
+      <div class="hero-copy"><div class="eyebrow"><span class="live-dot"></span> Bangladesh's digital top-up store</div><h1>Power up your<br><em>digital world.</em></h1><p>Instant gaming top-ups, premium subscriptions, and promotional services — delivered with care, clarity, and speed.</p><div class="hero-actions"><a class="button button-primary" href="#products">Explore products <span>→</span></a><button class="button button-quiet" id="heroTrack" type="button"><span>◎</span> Check an order</button></div><div class="trust-row"><div class="avatars"><span>AR</span><span>SN</span><span>MH</span><span>+</span></div><div><strong>4.9/5</strong><small>from 2,000+ happy customers</small></div></div></div>
+      <div class="hero-art"><div class="glow"></div><div class="hero-card card-main"><div class="card-top"><span class="chip">MB BD</span><span class="card-kicker">TOP UP NOW</span></div><div class="card-icon">◈</div><h3>Ready when<br>you are.</h3><div class="card-bottom"><span>Secure checkout</span><span>↗</span></div></div><div class="hero-card card-float float-one"><span class="float-icon fire">✦</span><span><b>Free Fire</b><small>Diamonds from ৳30</small></span><i>↗</i></div><div class="hero-card card-float float-two"><span class="float-icon music">♫</span><span><b>Spotify Premium</b><small>Subscriptions available</small></span><i>↗</i></div><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div></div>
+    </section>
+
+    <section class="trust-strip"><div class="shell trust-grid"><div><span class="trust-icon">⚡</span><span><b>Fast delivery</b><small>Most orders in minutes</small></span></div><div><span class="trust-icon">✓</span><span><b>Verified payments</b><small>Every order checked manually</small></span></div><div><span class="trust-icon">♧</span><span><b>Human support</b><small>Real help when you need it</small></span></div><div><span class="trust-icon">◌</span><span><b>Always transparent</b><small>No hidden fees, ever</small></span></div></div></section>
+
+    <section class="section shell" id="products"><div class="section-head"><div><span class="section-label">WHAT WE OFFER</span><h2>Find your next <em>upgrade.</em></h2></div><a href="#all" class="view-all">View all products <span>↗</span></a></div><div class="category-tabs" id="categoryTabs"><button class="active" data-category="all">All products</button><button data-category="gaming">Gaming top-up</button><button data-category="subscription">Subscriptions</button><button data-category="social">Social services</button><button data-category="tiktok">TikTok coins</button></div><div class="product-grid" id="productGrid"></div></section>
+
+    <section class="promo shell"><div class="promo-copy"><span class="section-label">BUILT FOR PLAY</span><h2>More play.<br><em>Less waiting.</em></h2><p>Top up your favorite games with a few simple steps. No passwords, no hassle — just your Player ID and a secure payment.</p><a class="button button-light" href="#how-it-works">See how it works <span>→</span></a></div><div class="promo-art"><span class="promo-star">✦</span><span class="promo-ring"></span><div class="promo-badge"><b>10k+</b><small>orders<br>delivered</small></div><div class="promo-lines"></div></div></section>
+
+    <section class="section shell" id="how-it-works"><div class="section-head centered"><span class="section-label">SIMPLE BY DESIGN</span><h2>Top up in <em>three steps.</em></h2><p>From product to playtime, we keep things quick and clear.</p></div><div class="steps"><div class="step"><span>01</span><div class="step-icon">⌕</div><h3>Choose a product</h3><p>Pick your game, subscription or service and select a package.</p></div><div class="step"><span>02</span><div class="step-icon">↗</div><h3>Pay securely</h3><p>Send the exact amount to our bKash, Nagad or Sun Money number.</p></div><div class="step"><span>03</span><div class="step-icon">✓</div><h3>Get it delivered</h3><p>Share your transaction ID. We verify and start fulfillment.</p></div></div></section>
+
+    <section class="support-section" id="support"><div class="shell support-inner"><div><span class="section-label">WE'RE HERE FOR YOU</span><h2>Questions? Let's<br><em>sort it out.</em></h2><p>Our support team is online every day to help with orders, payments, and product questions.</p></div><div class="support-card"><div class="support-avatar">MB</div><div><b>Talk to support</b><small>Usually replies in under 10 mins</small></div><a href="tel:01728557709">Call now <span>↗</span></a></div></div></section>
+  </main>
+
+  <footer><div class="shell footer-top"><div class="footer-brand"><a class="brand" href="#home"><span class="brand-mark">MB</span><span class="brand-copy"><b>MB BD</b><small>TOP OF ALL APPS</small></span></a><p>Your trusted destination for digital products, gaming top-ups, and more.</p></div><div class="footer-col"><b>Explore</b><a href="#products">All products</a><a href="#products">Gaming top-up</a><a href="#products">Subscriptions</a><a href="#products">Social services</a></div><div class="footer-col"><b>Support</b><a href="#support">Contact us</a><a href="#" id="footerTrack">Track order</a><a href="#">Refund policy</a><a href="#">Terms & conditions</a></div><div class="footer-contact"><b>Payment methods</b><div class="payment-pills"><span>bKash</span><span>Nagad</span><span>Sun Money</span></div><small>Merchant: <strong>01728 557 709</strong></small></div></div><div class="shell footer-bottom"><span>© 2025 MB BD TOP OF ALL APPS. All rights reserved.</span><span>Made for Bangladesh <span class="heart">♥</span></span></div></footer>
+
+  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" id="modalClose" aria-label="Close" type="button">×</button><div id="modalContent"></div></div></div>
+  <script src="auth.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
